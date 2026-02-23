@@ -2,14 +2,24 @@
   "manifest_version": 3,
   "name": "Copy Slides",
   "version": "1.0.0",
-  "description": "Right-click any image (e.g. in slides) and copy it to the clipboard",
+  "description": "Right-click any image (e.g. in Google Slides) and copy it to the clipboard via the Slides API",
   "permissions": [
     "contextMenus",
     "activeTab",
     "scripting",
-    "clipboardWrite"
+    "clipboardWrite",
+    "identity"
   ],
-  "host_permissions": ["<all_urls>"],
+  "host_permissions": [
+    "<all_urls>",
+    "https://slides.googleapis.com/*",
+    "https://www.googleapis.com/*",
+    "https://docs.google.com/*"
+  ],
+  "oauth2": {
+    "client_id": "YOUR_CLIENT_ID.apps.googleusercontent.com",
+    "scopes": ["https://www.googleapis.com/auth/presentations.readonly"]
+  },
   "background": {
     "service_worker": "background.js"
   },
@@ -17,6 +27,11 @@
     {
       "matches": ["<all_urls>"],
       "js": ["content.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["*://docs.google.com/presentation/*"],
+      "js": ["content-slides.js"],
       "run_at": "document_idle"
     }
   ]
