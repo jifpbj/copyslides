@@ -17,7 +17,7 @@
     "https://docs.google.com/*"
   ],
   "oauth2": {
-    "client_id": "YOUR_CLIENT_ID.apps.googleusercontent.com",
+    "client_id": "358051979272-mvhajpk97mdpvugsll7h1eb9stit70kj.apps.googleusercontent.com",
     "scopes": ["https://www.googleapis.com/auth/presentations.readonly"]
   },
   "background": {
