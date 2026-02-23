@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Copy Slides",
+  "version": "1.0.0",
+  "description": "Right-click any image (e.g. in slides) and copy it to the clipboard",
+  "permissions": [
+    "contextMenus",
+    "activeTab",
+    "scripting",
+    "clipboardWrite"
+  ],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
